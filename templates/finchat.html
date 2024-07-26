@@ -29,13 +29,13 @@
             font-weight: bold;
         }
         .chat-box {
-            height: 400px; /* Reduced height */
+            height: 400px;
             overflow-y: auto;
-            padding: 15px; /* Reduced padding */
+            padding: 15px;
             background-color: #f9f9f9;
         }
         .chat-message {
-            margin-bottom: 10px; /* Reduced margin */
+            margin-bottom: 10px;
         }
         .chat-message.user {
             text-align: right;
@@ -131,13 +131,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     <script>
         document.getElementById('chat-form').addEventListener('submit', function(event) {
             event.preventDefault();
             var query = document.getElementById('query').value;
             var chatBox = document.getElementById('chat-box');
-            
+
             // Display user message
             var userMessage = document.createElement('div');
             userMessage.className = 'chat-message user';
@@ -148,23 +147,22 @@
             // Clear input field
             document.getElementById('query').value = '';
 
-            // Send query to the backend
-            fetch('{{ url_for('ask') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({ 'query': query })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Display bot response
-                var botMessage = document.createElement('div');
-                botMessage.className = 'chat-message bot';
-                botMessage.innerHTML = '<p>' + data.response + '<small>Just now</small></p>';
-                chatBox.appendChild(botMessage);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            });
+            // Hardcoded responses
+            var responses = {
+                "What is the best stock to invest in right now?": "It depends on your investment goals and risk tolerance. Tech stocks like Apple and Microsoft are currently performing well.",
+                "How can I save more money?": "Consider creating a budget, reducing unnecessary expenses, and setting up an automatic savings plan.",
+                "What are some good investment options for retirement?": "Consider a diversified portfolio that includes stocks, bonds, and possibly real estate. Consult with a financial advisor for personalized advice.",
+                "Is it a good time to buy real estate?": "Real estate can be a good investment if you plan to hold it for the long term. It's essential to consider the current market conditions and interest rates."
+            };
+
+            var botResponse = responses[query] || "I'm sorry, I don't have an answer for that. Please consult with a financial advisor for personalized advice.";
+
+            // Display bot response
+            var botMessage = document.createElement('div');
+            botMessage.className = 'chat-message bot';
+            botMessage.innerHTML = '<p>' + botResponse + '<small>Just now</small></p>';
+            chatBox.appendChild(botMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
         });
     </script>
 </body>

@@ -3,7 +3,7 @@ import fitz  # PyMuPDF
 import os
 
 # Initialize OpenAI client with the provided API key
-openai.api_key = "sk-proj-wQwtpVBBBRHrNczNqLWVT3BlbkFJPXwpLpm51zEMiDW4eqmv"
+openai.api_key = "sk-iZO5ig3Atmbfhq-CnIL1Oga"
 
 # Path to the folder containing the PDFs
 pdf_folder_path = r"C:\Users\Harsh Singh\Downloads\Finchat\dataset"
