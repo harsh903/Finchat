@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Finchat</a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('finchat') }}">Chatbot</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('realtime_analysis') }}">Real-time Analysis <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container my-5">
+        <h2 class="text-center">Real-time Financial Data</h2>
+        <p class="text-center">This page contains real-time financial analysis tools, investment advice, and top news headlines.</p>
+        
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <input type="text" id="stockSearch" class="form-control" placeholder="Search for a stock...">
+                <button id="searchButton" class="btn btn-primary mt-2">Search</button>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="stock-tab" data-toggle="tab" href="#stock" role="tab" aria-controls="stock" aria-selected="true">Stock Analysis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="advice-tab" data-toggle="tab" href="#advice" role="tab" aria-controls="advice" aria-selected="false">Investment Advice</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="news-tab" data-toggle="tab" href="#news" role="tab" aria-controls="news" aria-selected="false">Top News Headlines</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="stock" role="tabpanel" aria-labelledby="stock-tab">
+                <div class="mt-4">
+                    <h4 class="text-center">Stock Analysis</h4>
+                    <canvas id="stockChart"></canvas>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="advice" role="tabpanel" aria-labelledby="advice-tab">
+                <div class="mt-4">
+                    <h4 class="text-center">Investment Advice</h4>
+                    <div id="investmentAdvice"></div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab">
+                <div class="mt-4">
+                    <h4 class="text-center">Top News Headlines</h4>
+                    <ul id="newsHeadlines" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Finchat. All rights reserved.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card, .jumbotron {
+    width: 100%;
+    max-width: 800px;
+}
+
+#chatbox_output p {
+    margin: 5px 0;
+}
+
+#chatbox_output p strong {
+    color: #333;
+}
